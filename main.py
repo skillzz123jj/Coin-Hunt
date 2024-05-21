@@ -63,7 +63,8 @@ class Monster:
         elif self.side == 3:
             self.x = 0 - monster_png.get_width() 
             self.y = randint(0, 480 - monster_png.get_height())
-                    
+            
+    #Moves the enemies based on what side it starts from                
     def move(self):
         if self.side == 0:
             self.y += 2  
@@ -73,6 +74,7 @@ class Monster:
             self.y += -2  
         elif self.side == 3:
             self.x += 2
+        #Draws the enemy on screen 
         screen.blit(monster_png, (self.x, self.y))
         
 #Timer to reset the upgrades   
@@ -227,9 +229,9 @@ while game_started:
     #Instantiating new enemies
     if randint(0, 100) < 1:
         side = randint(0, 3)
-        hirvio_testi = Monster(side)
-        hirvio_testi.initialize()
-        enemies.append(hirvio_testi)
+        monster = Monster(side)
+        monster.initialize()
+        enemies.append(monster)
             
    #Checks if player is touching the coin
     robo_rect = pygame.Rect(robo_x, robo_y, robo_png.get_width(), robo_png.get_height())
